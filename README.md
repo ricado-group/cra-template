@@ -1,6 +1,6 @@
-# cra-template-ricado-web
+# RICADO CRA Template
 
-This is the official Ricado Web template for [Create React App](https://github.com/facebook/create-react-app).
+This is the official RICADO Web template for project created via the [Create React App](https://github.com/facebook/create-react-app) CLI.
 
 For example:
 
