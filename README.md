@@ -5,11 +5,11 @@ This is the official RICADO Web template for project created via the [Create Rea
 For example:
 
 ```sh
-npx create-react-app my-app --template ricado-web
+npx create-react-app my-app --template @ricado/cra-template
 
 # or
 
-yarn create react-app my-app --template ricado-web
+yarn create react-app my-app --template @ricado/cra-template
 ```
 
 For more information, please refer to:
