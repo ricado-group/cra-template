@@ -1,5 +1,5 @@
 {
-  "name": "cra-template-ricado-web",
+  "name": "@ricado/cra-template",
   "version": "1.2.2",
   "keywords": [
     "react",
@@ -10,19 +10,18 @@
   "main": "template.json",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/ricado/arc-mono.git",
-    "directory": "packages/cra-template-ricado-web"
+    "url": "https://github.com/ricado-group/cra-template.git",
+    "directory": "/"
   },
-  "author": "Joshua Biddick",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "engines": {
-    "node": ">=8.10"
+    "node": ">=12.17"
+  },
+  "bugs": {
+    "url": "https://github.com/ricado-group/cra-template/issues"
   },
   "files": [
     "template",
     "template.json"
-  ],
-  "scripts": {
-    "build": "echo \"Building...\""
-  }
+  ]
 }
