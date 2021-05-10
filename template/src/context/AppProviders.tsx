@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { VersionProvider, AuthProvider, PointProvider } from "@ricado/core-ui";
+import { VersionProvider, AuthProvider } from "@ricado/core-ui";
+import { PointProvider } from "@ricado/points-service";
 import { QueryCache, ReactQueryCacheProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 
