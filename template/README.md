@@ -8,6 +8,7 @@ To get started, simply create a `.env` file at the root of the project with the 
 
 ```
 REACT_APP_BUGSNAG_API_KEY=apiKey
+REACT_APP_PROVIDER_ID=a2a2a813-bbeb-11e8-99a9-b8ca3a64dc30
 REACT_APP_ACCOUNTS_APP_URL=http://accounts.ricado.co.nz
 REACT_APP_VERSION=$npm_package_version
 REACT_APP_ENV=$NODE_ENV
