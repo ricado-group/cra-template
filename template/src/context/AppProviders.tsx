@@ -1,18 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { VersionProvider, AuthProvider } from "@ricado/core-ui";
-import { PointProvider } from "@ricado/points-service";
-import { QueryCache, ReactQueryCacheProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
-
-const queryCache = new QueryCache({
-  defaultConfig: {
-    queries: {
-      refetchOnWindowFocus: false,
-      staleTime: Infinity,
-    },
-  },
-});
+import { CoreProvider } from "@ricado/core-ui";
+import { PointsProvider } from "@ricado/points-service";
 
 /**
  * Wrapper HOC which provides all neccesary context actions and state
@@ -20,18 +9,11 @@ const queryCache = new QueryCache({
  */
 const AppProviders: React.FC<PropsWithChildren<any>> = ({ children }) => {
   return (
-    <ReactQueryCacheProvider queryCache={queryCache}>
+    <CoreProvider>
       <BrowserRouter>
-        <AuthProvider>
-          <VersionProvider>
-            <PointProvider>{children}</PointProvider>
-          </VersionProvider>
-        </AuthProvider>
-        {process.env.NODE_ENV === "development" ? (
-          <ReactQueryDevtools initialIsOpen />
-        ) : null}
+        <PointsProvider>{children}</PointsProvider>
       </BrowserRouter>
-    </ReactQueryCacheProvider>
+    </CoreProvider>
   );
 };
 

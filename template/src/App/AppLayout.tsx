@@ -3,13 +3,17 @@ import { Card, Menu } from "antd";
 import {
   QuestionCircleOutlined,
   LockOutlined,
-  AimOutlined,
   LogoutOutlined,
+  AimOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
-import { AccountMenu, AppShell, redirectToAccounts } from "@ricado/core-ui";
-import { useQueryCache } from "react-query";
-import { IUserAccountModel } from "../UserAccount/UserAccountClient";
+import {
+  AccountMenu,
+  AppShell,
+  redirectToAccounts,
+  IUserAccountModel,
+} from "@ricado/core-ui";
+import { useQueryClient } from "react-query";
 
 function getSelectedMenuKeys(pathname: string): string[] {
   const pathAsArray: string[] = pathname.split("/");
@@ -19,8 +23,8 @@ function getSelectedMenuKeys(pathname: string): string[] {
 
 const AppLayout: React.FC = ({ children }) => {
   const { pathname } = useLocation();
-  const cache = useQueryCache();
-  const user = cache.getQueryData<IUserAccountModel>("currentUser");
+  const client = useQueryClient();
+  const user = client.getQueryData<IUserAccountModel>("currentUser");
 
   function handleLockSession(): void {
     redirectToAccounts("SessionLock");

@@ -1,17 +1,20 @@
 import React from "react";
-import { useAuth } from "@ricado/core-ui";
-import UnauthenticatedApp from "./UnauthenticatedApp";
-import LockedApp from "./LockedApp";
-import AuthenticatedApp from "./AuthenticatedApp";
+import { HelpPage } from "@ricado/core-ui";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import AppLayout from "./AppLayout";
+import FeaturePage from "../Feature/FeaturePage";
 
 const App: React.FC = () => {
-  const { token, isLocked } = useAuth();
-
-  if (!token) return <UnauthenticatedApp />;
-
-  if (isLocked) return <LockedApp />;
-
-  return <AuthenticatedApp />;
+  return (
+    <AppLayout>
+      <Routes>
+        <Route path="feature" element={<FeaturePage />} />
+        <Route path="help" element={<HelpPage />} />
+        <Route path="*" element={<Navigate to="feature" />} />
+      </Routes>
+    </AppLayout>
+  );
 };
 
 export default App;
