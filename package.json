@@ -6,7 +6,7 @@
     "create-react-app",
     "template"
   ],
-  "description": "The base Ricado Web template for Create React App.",
+  "description": "The base RICADO Web template for Create React App.",
   "main": "template.json",
   "repository": {
     "type": "git",
