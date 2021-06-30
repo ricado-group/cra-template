@@ -6,18 +6,16 @@
 VERSION=1.1.1
 
 # Global Variables
-PORT?=8105
+# TODO: Choose a Port Number that doesn't clash with other RICADO Apps / Containers
+PORT?=
 
-APP_NAME=gen4-servicetech-app
-DISPLAY_NAME=Gen 4 Service Tech App
+# TODO: Change the APP_NAME to match the Docker Container Name
+APP_NAME=<app name>
+# TODO: Change the DISPLAY_NAME to match the Project Name in Octopus Deploy
+DISPLAY_NAME=App Name
 
 IMAGE_NAME=$(APP_NAME)
 CONTAINER_NAME=$(APP_NAME)
-
-PRE_BUILD_COMMAND=npm run build
-
-DOCKER_VOLUMES=\
---mount type=bind,source="$(CURDIR)/build/",target=/usr/share/nginx/html,readonly
 
 # Register Commands that do not build artifacts
 .PHONY: help build pull pull-latest run start stop restart login shell status version
@@ -31,8 +29,7 @@ help: ## Help Documentation
 
 # Docker Build
 build: ## Build the Docker Image
-	@$(PRE_BUILD_COMMAND)
-	@docker build -t ricado/$(IMAGE_NAME) .
+	@docker build --build-arg NPM_TOKEN=$(NPM_TOKEN) -t ricado/$(IMAGE_NAME) .
 
 # Docker Pull
 pull: login pull-latest ## Login and Pull the `latest` Docker Image
@@ -43,11 +40,11 @@ pull-latest: ## Pull the `latest` Tag of the Docker Image
 # Docker Run
 run: ## Run the Docker Container in Interactive Mode
 	@echo "Running ricado/"$(IMAGE_NAME) "as Daemon on Port" $(PORT);
-	@docker run -it --rm --name $(CONTAINER_NAME) $(DOCKER_VOLUMES) -p $(PORT):80 ricado/$(IMAGE_NAME)
+	@docker run -it --rm --name $(CONTAINER_NAME) -p $(PORT):80 ricado/$(IMAGE_NAME)
 
 start: ## Start the Docker Container in Daemon Mode
 	@echo "Running ricado/"$(IMAGE_NAME) "as Daemon on Port" $(PORT);
-	@docker run -d --rm --name $(CONTAINER_NAME) $(DOCKER_VOLUMES) -p $(PORT):80 ricado/$(IMAGE_NAME)
+	@docker run -d --rm --name $(CONTAINER_NAME) -p $(PORT):80 ricado/$(IMAGE_NAME)
 
 stop: ## Stop the Docker Container
 	-@docker stop $(CONTAINER_NAME)
