@@ -1,5 +1,7 @@
 # RICADO CRA Template
 
+> ⚠ This repo is now archived and is lo longer in active development  
+
 This is the official RICADO Web template for project created via the [Create React App](https://github.com/facebook/create-react-app) CLI.
 
 For example:
